@@ -223,7 +223,7 @@ const callback = async (req, res) => {
     accessToken = response.data.access_token;
     res.status(200).send(`<h1>Login Successfull.</h1>
      <h2>You can visit following routes </h2>
-     <h4> http://localhost:3000/spotify/top-tracks </h4><h4> http://localhost:3000/spotify/currently-playing</h4><h4> http://localhost:3000/spotify/pause-current-song </h4><h4> http://localhost:3000/spotify/play-track</h4><h4> http://localhost:3000/spotify/artists </h4>`);
+     <h4> https://portfolio-backend-two-pied.vercel.app/spotify/top-tracks </h4><h4> https://portfolio-backend-two-pied.vercel.app/spotify/currently-playing</h4><h4> https://portfolio-backend-two-pied.vercel.app/spotify/pause-current-song </h4><h4> http://localhost:3000/spotify/play-track</h4><h4> https://portfolio-backend-two-pied.vercel.app/spotify/artists </h4>`);
   } catch (error) {
     res
       .status(500)

@@ -39,28 +39,14 @@ const createProject = async (req, res) => {
 // };
 
 const viewProject = async (req, res) => {
-  //const title = req.body.title;
-
   try {
-    // No title → return all projects
     const projects = await ProjectModel.find();
     return res.status(200).json({
-      message: "All projects fetched successfully",
+      message: "Projects",
       count: projects.length,
       projects,
     });
   } catch (error) {
-    // Title provided → return single project
-    // const project = await ProjectModel.findOne({ title });
-    // if (!project) {
-    //   return res.status(404).json({ message: "Project not found." });
-    // }
-
-    // res.status(200).json({
-    //   Title: project.title,
-    //   TechStack: project.techStack,
-    //   Description: project.description,
-    // });
     res.status(500).json({
       message: "Internal Server Error",
       error: error.message,
