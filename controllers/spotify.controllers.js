@@ -79,13 +79,10 @@ const currentPlayingSong = async (req, res) => {
       }
     );
 
-    if (!response)
-      return res
-        .status(404)
-        .json({ message: "Please play the song on spotify." });
-
+    if (response.status === 204 || !response.data || !response.data.item) {
+      return res.status(200).json({ message: "No song is currently playing." });
+    }
     const formattedTrack = {
-      id: response.data.item.id,
       name: response.data.item.name,
       track: response.data.item.type,
       artists: response.data.item.album.artists
@@ -95,6 +92,8 @@ const currentPlayingSong = async (req, res) => {
     };
     res.status(200).json({ track: formattedTrack });
   } catch (error) {
+    console.log(error);
+
     res
       .status(500)
       .json({ message: "Internal server error", error: error.message });
@@ -223,7 +222,7 @@ const callback = async (req, res) => {
     accessToken = response.data.access_token;
     res.status(200).send(`<h1>Login Successfull.</h1>
      <h2>You can visit following routes </h2>
-     <h4> https://portfolio-backend-two-pied.vercel.app/spotify/top-tracks </h4><h4> https://portfolio-backend-two-pied.vercel.app/spotify/currently-playing</h4><h4> https://portfolio-backend-two-pied.vercel.app/spotify/pause-current-song </h4><h4> http://localhost:3000/spotify/play-track</h4><h4> https://portfolio-backend-two-pied.vercel.app/spotify/artists </h4>`);
+     <h4> https://portfolio-backend-two-pied.vercel.app/spotify/top-tracks </h4><h4> https://portfolio-backend-two-pied.vercel.app/spotify/currently-playing</h4><h4> https://portfolio-backend-two-pied.vercel.app/spotify/pause-current-song </h4><h4> https://portfolio-backend-two-pied.vercel.app/spotify/play-track</h4><h4> https://portfolio-backend-two-pied.vercel.app/spotify/artists </h4>`);
   } catch (error) {
     res
       .status(500)
