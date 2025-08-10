@@ -18,5 +18,8 @@ app.use("/user/contact", contactRoutes);
 
 //spotify
 app.use("/spotify", spotifyRoutes);
+app.get("/", (req, res) => {
+  res.send("Welcome to my Portfolio");
+});
 
 module.exports = app;
