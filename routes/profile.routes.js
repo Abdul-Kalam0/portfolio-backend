@@ -8,8 +8,7 @@ const {
 
 router.use(express.json());
 
-router.post("/create", createProfile);
-router.get("/view", getProfile);
-router.put("/update", updateProfile);
+router.post("/profile", createProfile);
+router.get("/profile", getProfile);
 
 module.exports = router;

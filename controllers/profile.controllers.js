@@ -12,7 +12,10 @@ const createProfile = async (req, res) => {
 
     const newProfile = new ProfileModel(req.body);
     await newProfile.save();
-    res.status(201).json({ message: "Profile created successfully!!!" });
+    res.status(201).json({
+      message: "Profile created successfully!!!",
+      Profile: newProfile,
+    });
   } catch (error) {
     res
       .status(500)
@@ -25,6 +28,7 @@ const getProfile = async (req, res) => {
     const user = await ProfileModel.find();
     if (!user)
       return res.status(404).json({ message: "Profile does not exist." });
+
     const finalUser = user[0];
     res.status(200).json({
       Name: finalUser.name,

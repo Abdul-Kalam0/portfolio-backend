@@ -12,14 +12,16 @@ const spotifyRoutes = require("./routes/spotify.routes");
 app.use(express.json());
 app.use(cors());
 
-app.use("/user/profile", profileRoutes);
-app.use("/user/projects", projectRouters);
-app.use("/user/contact", contactRoutes);
+app.use("/users", profileRoutes);
+app.use("/projects", projectRouters);
+app.use("/contacts", contactRoutes);
 
 //spotify
 app.use("/spotify", spotifyRoutes);
 app.get("/", (req, res) => {
-  res.send("Welcome to my Portfolio");
+  res.send(
+    `<h1>Welcome to my Porfolio</h1> <h4>https://portfolio-backend-two-pied.vercel.app/spotify/auth/login</h4>`
+  );
 });
 
 module.exports = app;

@@ -1,7 +1,8 @@
 const server = require("./index");
-require("./config/db");
+const dbInitialization = require("./config/db");
 const dotenv = require("dotenv");
 dotenv.config();
+dbInitialization();
 
 let PORT = process.env.PORT || 3000;
 

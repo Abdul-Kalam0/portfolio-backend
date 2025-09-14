@@ -18,27 +18,7 @@ const createProject = async (req, res) => {
   }
 };
 
-// const viewProject = async (req, res) => {
-//   const { title } = req.body;
-//   try {
-//     if (!title) return res.status(400).json({ message: "Title is required." });
-//     const project = await ProjectModel.findOne({ title });
-//     if (!project)
-//       return res.status(404).json({ message: "Project not found." });
-
-//     res.status(200).json({
-//       Title: project.title,
-//       TechStack: project.techStack,
-//       Description: project.description,
-//     });
-//   } catch (error) {
-//     res
-//       .status(500)
-//       .json({ message: "Internal Server error", error: error.message });
-//   }
-// };
-
-const viewProject = async (req, res) => {
+const getProjects = async (req, res) => {
   try {
     const projects = await ProjectModel.find();
     return res.status(200).json({
@@ -46,6 +26,7 @@ const viewProject = async (req, res) => {
       count: projects.length,
       projects,
     });
+    res.status(200).json({ message: "Projects fetched successfully" });
   } catch (error) {
     res.status(500).json({
       message: "Internal Server Error",
@@ -54,4 +35,4 @@ const viewProject = async (req, res) => {
   }
 };
 
-module.exports = { createProject, viewProject };
+module.exports = { createProject, getProjects };
