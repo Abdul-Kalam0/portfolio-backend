@@ -20,7 +20,7 @@ app.use("/contacts", contactRoutes);
 app.use("/spotify", spotifyRoutes);
 app.get("/", (req, res) => {
   res.send(
-    `<h1>Welcome to my Porfolio</h1> <h4>https://portfolio-backend-two-pied.vercel.app/spotify/auth/login</h4>`
+    `<h1>Welcome to my Porfolio</h1><h2>Login using given URL</h2> <h4>https://portfolio-backend-two-pied.vercel.app/spotify/auth/login</h4>`
   );
 });
 
