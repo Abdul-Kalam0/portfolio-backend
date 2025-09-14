@@ -18,7 +18,7 @@ router.get("/auth/callback", callback);
 router.get("/top-tracks", getTopTracks);
 router.get("/currently-playing", currentPlayingSong);
 router.get("/pause-current-song", puaseNowPlayingSong);
-router.post("/play-track", playAnyTrackSong);
+router.post("/play-track/:uri", playAnyTrackSong);
 router.get("/artists", followArtists);
 
 module.exports = router;

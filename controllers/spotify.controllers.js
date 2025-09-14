@@ -140,7 +140,7 @@ const puaseNowPlayingSong = async (req, res) => {
 };
 
 const playAnyTrackSong = async (req, res) => {
-  const uri = req.body.uri;
+  const { uri } = req.params;
   try {
     const response = await axios.put(
       "https://api.spotify.com/v1/me/player/play",
